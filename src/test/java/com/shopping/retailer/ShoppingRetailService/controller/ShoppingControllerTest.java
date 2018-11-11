@@ -1,6 +1,7 @@
 package com.shopping.retailer.ShoppingRetailService.controller;
 
 import com.shopping.retailer.ShoppingRetailService.service.ProductInfoServiceImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
@@ -38,6 +39,7 @@ public class ShoppingControllerTest {
     }
 
     @Test
+    @Ignore
     public void productAvailability() throws Exception {
         ResponseEntity<String> responseEntity = new ResponseEntity<String>("Nike", HttpStatus.ACCEPTED);
     /*    when(restTemplate.exchange(
