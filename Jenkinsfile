@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-         stage ('Compile Stage'){
+	     stage ('Clone Stage'){
              steps{
-                 git "mvn clean compile"
+                 git "https://github.com/kbhagtan/ShoppingRetailService.git"
              }
          }
 
