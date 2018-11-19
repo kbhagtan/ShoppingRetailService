@@ -6,7 +6,8 @@ pipeline {
 	{
 	
 	steps{
-	if (env.GIT_COMMIT != env.GIT_PREVIOUS_SUCCESSFUL_COMMIT) {
+	{
+	if (env.GIT_COMMIT != env.GIT_PREVIOUS_SUCCESSFUL_COMMIT)
 	echo "Triggering a new build"
 	}
 	}
