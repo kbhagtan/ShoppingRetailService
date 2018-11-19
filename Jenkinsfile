@@ -16,15 +16,6 @@ pipeline {
                 }
             }
         }
-		
-		stage ('Test Stage') {
-
-            steps {
-                withMaven(maven : 'Maven6') {
-                    sh "mvn test"
-                }
-            }
-        }
         
         stage ('Deploy Stage') {
 
