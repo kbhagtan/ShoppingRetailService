@@ -2,7 +2,8 @@ FROM openjdk:8
 
 LABEL maintainer="Kunj Bhagtani"
 
-EXPOSE 8084
+#post number
+EXPOSE 8086
 
 # The application's jar file
 ARG JAR_FILE=target/ShoppingRetailService-0.0.1-SNAPSHOT.jar

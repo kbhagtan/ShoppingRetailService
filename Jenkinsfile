@@ -14,6 +14,7 @@ pipeline {
             steps {
                 withMaven(maven : 'Maven6') {
                     sh "mvn clean install -Dmaven.test.skip=true"
+					sh "docker build . -t ShoppingRetailService:${env.BUILD_ID}"
                 }
             }
         }
