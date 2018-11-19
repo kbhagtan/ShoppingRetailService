@@ -21,7 +21,7 @@ pipeline {
         stage ('Deploy Stage') {
 
             steps {
-                     sh 'JENKINS_NODE_COOKIE=dontKillMenohup java -jar /var/lib/jenkins/workspace/PipelineAsCode/target/ShoppingRetailService-0.0.1-SNAPSHOT.jar  --server.port=8086 &'
+                     sh 'java -Dhudson.util.ProcessTree.disable=true  -jar /var/lib/jenkins/workspace/PipelineAsCode/target/ShoppingRetailService-0.0.1-SNAPSHOT.jar  --server.port=8086 &'
             }
         }
   }
