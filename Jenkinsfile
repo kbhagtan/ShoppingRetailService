@@ -2,35 +2,29 @@ pipeline {
     agent any
 
     stages {
-         stage ('Clone Stage'){
+         stage ('Compile Stage'){
              steps{
-                 git "https://github.com/kbhagtan/ShoppingRetailService.git"
+                 git "mvn clean compile"
              }
          }
-
 
         stage ('Package Stage') {
 
             steps {
                 withMaven(maven : 'Maven6') {
                     sh "mvn clean install -Dmaven.test.skip=true"
-					
                 }
             }
         }
 		
-		stage ('Dockerise') {
-		
-		   steps {
-		     sh "sudo curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
-                 && sudo tar xzvf docker-17.04.0-ce.tgz \
-                 && sudo mv docker/docker /usr/local/bin \
-                 && sudo rm -r docker docker-17.04.0-ce.tgz
-				 jenkins ALL=(ALL) NOPASSWD: ALL"
-		     sh "docker build . -t ShoppingRetailService:${env.BUILD_ID}"
-		   }
-		}
-		
+		stage ('Test Stage') {
+
+            steps {
+                withMaven(maven : 'Maven6') {
+                    sh "mvn test"
+                }
+            }
+        }
         
         stage ('Deploy Stage') {
 
