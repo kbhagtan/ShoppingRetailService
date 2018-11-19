@@ -22,10 +22,10 @@ pipeline {
 		stage ('Dockerise') {
 		
 		   steps {
-		     sh "curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
-                 && tar xzvf docker-17.04.0-ce.tgz \
-                 && mv docker/docker /usr/local/bin \
-                 && rm -r docker docker-17.04.0-ce.tgz"
+		     sh "sudo curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
+                 && sudo tar xzvf docker-17.04.0-ce.tgz \
+                 && sudo mv docker/docker /usr/local/bin \
+                 && sudo rm -r docker docker-17.04.0-ce.tgz"
 		     sh "docker build . -t ShoppingRetailService:${env.BUILD_ID}"
 		   }
 		}
