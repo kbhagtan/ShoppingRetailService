@@ -27,7 +27,7 @@ pipeline {
 			script {
 			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
 			}
-			sh "docker run -dp 9066:9066 kbhagtan3/pipeline:${env.BUILD_ID}" 
+			sh "docker run -dp 8086:8086 kbhagtan3/pipeline:${env.BUILD_ID}" 
 
       }
     }
