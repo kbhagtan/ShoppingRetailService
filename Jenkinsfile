@@ -22,14 +22,20 @@ pipeline {
             }
         }
         
-		stage('Building image') {
+		stage('Building Docker Image') {
 			steps{
 			script {
 			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
-			}
-			sh "docker run -dp 8086:8086 kbhagtan3/pipeline:${env.BUILD_ID}" 
-
+			}	
       }
     }
+	
+	 stage ('Run Stage')
+	 {
+		steps{
+		sh "docker run -dp 8096:8096 spring-boot-jenkins-app:${env.BUILD_ID}"	
+	 }
+	
     }
+  }
   }
