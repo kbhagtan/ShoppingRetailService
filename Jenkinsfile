@@ -26,7 +26,8 @@ pipeline {
 			steps{
 			script {
 			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
-			dockerImage.push registry
+			docker login docker.io
+			dockerImage.push registry "kbhagtan3/pipeline"
 			}
       }
     }
