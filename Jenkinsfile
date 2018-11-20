@@ -1,4 +1,10 @@
 pipeline {
+
+	environment {
+    registry = "docker_hub_account/kbhagtan3"
+    registryCredential = 'Ronaldo@07'
+	}
+	
     agent any
 
     stages {
@@ -17,6 +23,14 @@ pipeline {
             }
         }
         
+		 stage('Building image') {
+			steps{
+			script {
+			docker.build registry + ":$BUILD_NUMBER"
+			}
+		}
+		}
+		
         stage ('Deploy Stage') {
 
             steps {
