@@ -1,5 +1,9 @@
 pipeline {
 
+	environment {
+    registry = "docker_hub_account/kbhagtan3"
+	}
+	
     agent any
 
     stages {
@@ -20,18 +24,10 @@ pipeline {
         
 		 stage('Building image') {
 			steps{
-			
-			sh 'docker build kbhagtan3/pipeline:$BUILD_NUMBER'
-			sh 'docker push kbhagtan3/pipeline:$BUILD_NUMBER'
-			
+			script {
+			docker.build registry + ":$BUILD_NUMBER"
+			}
       }
     }
-		
-        stage ('Deploy Stage') {
-
-            steps {
-                     sh 'BUILD_ID=dontKillMe JENKINS_NODE_COOKIE=dontKillMe java -Dhudson.util.ProcessTree.disable=true -jar /var/lib/jenkins/workspace/PipelineAsCode/target/ShoppingRetailService-0.0.1-SNAPSHOT.jar  --server.port=8086 &'
-            }
-        }
   }
 }
