@@ -25,7 +25,7 @@ pipeline {
 		 stage('Building image') {
 			steps{
 			
-			sh 'docker build registry :$BUILD_NUMBER'
+			sh 'docker build registry:$BUILD_NUMBER'
 			sh 'docker push registry:$BUILD_NUMBER'
 			
       }
