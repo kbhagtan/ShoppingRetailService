@@ -33,7 +33,7 @@ pipeline {
 	 stage ('Run Stage')
 	 {
 		steps{
-		sh "docker run -dp 8096:8096 spring-boot-jenkins-app:${env.BUILD_ID}"	
+		sh "docker run -dp 8096:8096 kbhagtan3/pipeline:${env.BUILD_ID}"	
 	 }
 	
     }
