@@ -1,9 +1,5 @@
 pipeline {
 
-	environment {
-    registry = "kbhagtan3/pipeline"
-	}
-	
     agent any
 
     stages {
@@ -25,8 +21,8 @@ pipeline {
 		 stage('Building image') {
 			steps{
 			
-			sh 'docker build registry:$BUILD_NUMBER'
-			sh 'docker push registry:$BUILD_NUMBER'
+			sh 'docker build kbhagtan3/pipeline$BUILD_NUMBER'
+			sh 'docker push kbhagtan3/pipeline:$BUILD_NUMBER'
 			
       }
     }
