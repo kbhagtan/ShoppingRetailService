@@ -26,8 +26,11 @@ pipeline {
 			steps{
 			script {
 			def customImage = docker.build registry + ":$BUILD_NUMBER"
+			docker.login -u "kbhagtan3" -p "$Ronaldo@07"
 			customImage.push()
 			}
+			
+			
       }
     }
   }
