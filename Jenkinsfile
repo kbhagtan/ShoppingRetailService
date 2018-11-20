@@ -1,5 +1,9 @@
 pipeline {
 
+	environment {
+    registry = "kbhagtan3/pipeline"
+	}
+	
     agent any
 
     stages {
@@ -21,10 +25,10 @@ pipeline {
 		 stage('Building image') {
 			steps{
 			script {
-			docker build -t kbhagtan3/pipeline:$BUILD_NUMBER
-			sudo docker push kbhagtan3/pipeline:$BUILD_NUMBER
+			docker.build registry + ":$BUILD_NUMBER"
+			sudo docker push registry + ":$BUILD_NUMBER"
 			}
-		}
+      }
     }
 		
         stage ('Deploy Stage') {
