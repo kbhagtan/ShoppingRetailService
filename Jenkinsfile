@@ -1,7 +1,7 @@
 pipeline {
 
 	environment {
-    registry = "docker_hub_account/kbhagtan3"
+    registry = "kbhagtan3/pipeline"
 	}
 	
     agent any
@@ -25,7 +25,8 @@ pipeline {
 		stage('Building image') {
 			steps{
 			script {
-			docker.build registry + ":$BUILD_NUMBER"
+			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
+			dockerImage.push()
 			}
       }
     }
