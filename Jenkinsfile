@@ -26,7 +26,7 @@ pipeline {
 			steps{
 			script {
 			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
-			dockerImage.push()
+			dockerImage.push registry
 			}
       }
     }
