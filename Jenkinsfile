@@ -27,7 +27,6 @@ pipeline {
 			script {
 			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
 			}
-			sh "docker login docker.io"
 			sh "docker push kbhagtan3/pipeline"
 
       }
