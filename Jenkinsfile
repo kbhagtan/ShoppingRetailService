@@ -1,10 +1,5 @@
 pipeline {
 
-	environment {
-    registry = "docker_hub_account/kbhagtan3"
-    registryCredential = 'Ronaldo@07'
-	}
-	
     agent any
 
     stages {
@@ -26,10 +21,11 @@ pipeline {
 		 stage('Building image') {
 			steps{
 			script {
-			docker.build registry + ":$BUILD_NUMBER"
+			docker build -t kbhagtan3/pipeline:$BUILD_NUMBER
+			sudo docker push kbhagtan3/pipeline:$BUILD_NUMBER
 			}
 		}
-		}
+    }
 		
         stage ('Deploy Stage') {
 
