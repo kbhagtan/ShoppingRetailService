@@ -27,7 +27,7 @@ pipeline {
 			script {
 			def dockerImage =  docker.build registry + ":$BUILD_NUMBER"
 			}
-			sh "docker push kbhagtan3/pipeline"
+			sh "docker run -it -d kbhagtan3/pipeline:91"
 
       }
     }
