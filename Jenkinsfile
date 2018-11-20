@@ -23,9 +23,12 @@ pipeline {
         }
         
 		stage('Building image') {
+		steps 
+		{
 		withDockerRegistry([credentialsId: 'docker-registry-credentials', url: "https://hub.docker.com/r/kbhagtan3/pipeline/"]) {
         def image = docker.build("docker_hub_account/kbhagtan3:$BUILD_NUMBER", "--build-arg PACKAGE_VERSION=$BUILD_NUMBER ./tmp-docker-build-context")
         image.push()
+		}
       }  		
       }
     }
